@@ -1,0 +1,70 @@
+<!-- CJS (aka CommomJS) = Node.js [Local] -->
+<!-- ESM (aka ES Modules) = JavaScript Modules [Browser] -->
+<!-- Traditional/Regular Scripts = Classic Javascript [Browser] -->
+
+<!-- 
+ES6 Module Import/Export Types
+
+Export Types:
+1. Named Export (Multiple)
+export const books = [...];
+export const authors = [...];
+export function getBook() { ... }
+
+2. Default Export (One per file)
+const books = [...];
+export default books;
+
+3. Export List
+const books = [...];
+const authors = [...];
+export { books, authors };
+
+4. Rename on Export
+export { books as bookData, authors as writerList };
+
+5. Re-export from another module
+export { books } from './data.js';
+
+---
+
+Import Types:
+// 1. Named Import
+import { books, authors } from './books-data.js';
+
+// 2. Rename on Import
+import { books as bookData } from './books-data.js';
+
+// 3. Namespace Import
+import * as BookData from './books-data.js';
+// Use: BookData.books, BookData.authors
+
+// 4. Default Import
+import books from './books-data.js';
+
+// 5. Mixed Import
+import books, { authors } from './books-data.js';
+
+// 6. Side-effect Import (for code that runs)
+import './initialize.js';
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Structures & Modern Operators - Assignments</title>
+  </head>
+  <body>
+    <h1>JavaScript Assignments</h1>
+    <p>Open the console to see the results.</p>
+
+    <!-- Main JS file -->
+    <script type="module" src="main.js"></script>
+
+    <!-- Specific assignment file tests -->
+    <!-- <script type="module" src="array-destructuring.js"></script> -->
+    <!-- <script type="module" src="object-destructuring.js"></script> -->
+  </body>
+</html>
