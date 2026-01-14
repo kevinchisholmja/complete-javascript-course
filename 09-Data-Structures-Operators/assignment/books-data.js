@@ -125,7 +125,7 @@ const books = [
     ISBN: "9780471694663",
     language: "English",
     programmingLanguage: "C, Java",
-    onlineContent: false,
+    onlineContent: true,
     thirdParty: {
       goodreads: {
         rating: 3.9,

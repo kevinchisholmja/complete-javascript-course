@@ -43,8 +43,8 @@ const restaurant = {
   },
 
   orderPizza(mainIngredient, ...otherIngredients) {
-    console.log(mainIngredient);
-    console.log(otherIngredients);
+    // console.log(mainIngredient);
+    // console.log(otherIngredients);
   },
 };
 
@@ -911,21 +911,21 @@ console.log(restaurantName, hours, tags);
 // Default values
 const { menu = [], starterMenu: starters = [] } = restaurant;
 console.log(menu, starters);
-
+*/
 // Mutating variables
 let a = 111;
 let b = 999;
 const obj = { a: 23, b: 7, c: 14 };
 ({ a, b } = obj);
-console.log(a, b);
+// console.log(a, b);
 
 // Nested objects
 const {
   fri: { open: o, close: c },
 } = openingHours;
-console.log(o, c);
+// console.log(o, c);
 
-
+/*
 ///////////////////////////////////////
 // Destructuring Arrays
 const arr = [2, 3, 4];

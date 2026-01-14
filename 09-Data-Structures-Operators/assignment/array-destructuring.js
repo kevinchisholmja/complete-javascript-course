@@ -33,10 +33,10 @@ Below is the nested ratings array that contains two other arrays. Destructure th
 1.4
 Below is the ratingStars array. Destructure it into three variables called fiveStarRatings, oneStarRatings and threeStarRatings. Assign the threeStarRatings variable with a default value of 0.
 */
-const ratingStars = [63405, 1808];
+// const ratingStars = [63405, 1808];
 
-const [fiveStarRatings = 100, oneStarRatings = 10, threeStarRatings = 0] = ratingStars;
+// const [fiveStarRatings = 100, oneStarRatings = 10, threeStarRatings = 0] = ratingStars;
 
-console.log(fiveStarRatings);
-console.log(oneStarRatings);
-console.log(threeStarRatings);
+// console.log(fiveStarRatings);
+// console.log(oneStarRatings);
+// console.log(threeStarRatings);
