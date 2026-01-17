@@ -594,7 +594,7 @@ for (const [min, event] of gameEvents) {
   const half = min <= 45 ? 'FIRST' : 'SECOND';
 
   // Log once
-  console.log(`[${half} HALF] ${min}: ${event}`);
+  // console.log(`[${half} HALF] ${min}: ${event}`);
 }
 
 //

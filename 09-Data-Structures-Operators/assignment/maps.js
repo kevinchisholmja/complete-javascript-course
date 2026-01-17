@@ -78,6 +78,6 @@ Use the for-of loop to iterate over firstBookMap, and log to the console keys th
 */
 for (const [key, val] of firstBookMap.entries()) {
   if (typeof val === "number") {
-    console.log(key);
+    // console.log(key);
   }
 }
