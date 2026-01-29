@@ -53,7 +53,7 @@ Get the size of bookMap, and log it to the console.
 Check if bookMap has the author key. and if so, log "The author of the book is known" to the console.
 
 */
-bookMap.has("author") && console.log("The author of the book is known");
+// bookMap.has("author") && console.log("The author of the book is known");
 
 // Aleternative
 // if (bookMap.has('author')) console.log('The author is known');

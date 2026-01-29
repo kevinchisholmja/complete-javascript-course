@@ -597,4 +597,527 @@ for (const [min, event] of gameEvents) {
   // console.log(`[${half} HALF] ${min}: ${event}`);
 }
 
-//
+// ---
+
+///////////////////////////////////////
+
+/* The Complete JavaScript Course Coding Challenge 
+
+##  Challenge #4 
+
+Write a program that receives a list of variable names written in underscore_case 
+and convert them to camelCase. 
+
+The input will come from a textarea inserted into the DOM (see code below to 
+insert the elements), and conversion will happen when the button is pressed. 
+
+Test data (pasted to textarea, including spaces): 
+
+underscore_case
+
+ first_name
+
+Some_Variable
+
+  calculate_AGE
+
+delayed_departure
+
+Should produce this output (5 separate console.log outputs): 
+
+underscoreCase      ✅ 
+firstName           ✅✅ 
+someVariable        ✅✅✅ 
+calculateAge        ✅✅✅✅ 
+delayedDeparture    ✅✅✅✅✅ 
+
+Hints: 
+1. Remember which character defines a new line in the textarea 😉 
+2. The solution only needs to work for a variable made out of 2 words, like a_b 
+3. Start without worrying about the ✅. Tackle that only after you have the variable 
+name conversion working 😉 
+4. This challenge is difficult on purpose, so start watching the solution in case 
+you're stuck. Then pause and continue! 
+ 
+Afterwards, test with your own test data! 
+ 
+GOOD LUCK 😀 
+
+*/
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+/* *****************************
+             MY WAY
+***************************** */
+
+// // We capture the event from each DOM element
+// const textEl = document.querySelector('textarea')
+// const buttonEl = document.querySelector('button')
+
+// // We create the function based on the button click
+// buttonEl.addEventListener('click', function () {
+//   console.log('Button clicked!');
+
+//   // We capture the textarea content (returns one element)
+//   const content = textEl.value
+//   console.log(`Capture textarea`, content);
+
+//   // We use line break to separate
+//   const lines = content.split('\n');
+
+//   // We normalize each in the array
+//   const normalize = (texts) => {
+//     console.log(`After split`, texts)
+
+//     const results = [];
+//     let newText = ''
+//     let checkMark = ''
+//     let combine = ''
+//     let paddedText = ''
+
+//     for (const text of texts) {
+//       if (text === "") { // remove blank lines
+//         continue
+//       } else {
+//         const trimtext = text.trim().toLowerCase() // remove blank spaces & lowercase
+//         newText =
+//           trimtext.slice(0, trimtext.indexOf('_')) +        // Provide 1st half
+//           trimtext.slice(trimtext.lastIndexOf('_') + 1).slice(0, 1).toUpperCase() + // Capture & Uppercase 1st letter of 2nd word
+//           trimtext.slice(trimtext.lastIndexOf('_') + 2,) // slice, then provide 2nd word
+
+//         // console.log(`During loop`, newText )
+
+//         paddedText = newText.padEnd(20, ' ');
+
+//         checkMark += `✅`
+
+//         combine = paddedText + checkMark
+
+//         console.log(combine)
+
+//         results.push(combine);
+//       }
+//     }
+//     console.log(`Capture return`, results)
+
+//     return results;
+
+//   }
+//   normalize(lines)
+
+// });
+
+/* *****************************
+ MUCH BETTER WAY (done by AI deepseek)
+***************************** */
+
+// const textarea = document.querySelector('textarea');
+// const button = document.querySelector('button');
+
+// button.addEventListener('click', function () {
+//   // Get the text from textarea
+//   const text = textarea.value;
+
+//   // Split by new line to get array of lines
+//   const lines = text.split('\n');
+
+//   // Manual counter for checkmarks
+//   let lineNumber = 1;
+
+//   // Loop through each line (using for loop to get index)
+//   for (const line of lines) {
+
+//     // Skip empty lines
+//     if (line.trim() === '') continue;
+
+//     // Trim and convert to lowercase
+//     const trimmedLine = line.trim().toLowerCase();
+
+//     // Find the underscore position
+//     const [firstWord, secondWord] = trimmedLine.split('_');
+
+//     // Extract parts and convert to camelCase
+//     const camelCase = firstWord +
+//       secondWord[0].toUpperCase() +
+//       secondWord.slice(1);
+
+//     // Create padded & checkmarks based on line index - Output the result
+//     console.log(
+//       camelCase.padEnd(20, ' ') +
+//       '✅'.repeat(lineNumber)
+//     );
+
+//     // Increment for next line
+//     lineNumber++;
+//   }
+// });
+
+
+///////////////////////////////////////
+// Google Gemini - Challenge #5: The "Log Parser"
+///////////////////////////////////////
+
+/*
+
+### Challenge #5: The "Log Parser"
+
+**The Scenario:**
+You are building a monitoring dashboard. You are receiving a raw stream of data from a server log. The data is messy, separated by different symbols, and needs to be formatted into a human-readable alert.
+
+** The Input (Paste this into your textarea):**
+
+```text
+STATUS:CRITICAL;ID:404;ERR:Connection_Timeout
+STATUS:warn;ID:200;ERR:cpu_overload
+STATUS:OK;ID:500;ERR:system_stable
+
+```
+
+**The Goal:**
+Transform each line into a clean console log sentence.
+
+**Expected Output:**
+
+```text
+🚨 Critical! Error 404: Connection Timeout
+⚠️ Warn! Error 200: Cpu Overload
+✅ Ok! Error 500: System Stable
+
+```
+
+*(Note: Capitalization matters! "Connection_Timeout" becomes "Connection Timeout")*
+
+---
+
+### 🛑 The Constraints (Read Carefully)
+
+These constraints are designed to force you out of your "slicing" habit.
+
+1. **ABSOLUTELY NO `indexOf` or `lastIndexOf**`: You are forbidden from searching for the position of a character.
+2. **ABSOLUTELY NO manual numbers in `slice` or `substring**`: You cannot say `slice(0, 7)`. You cannot count characters. (You *can* use `slice(1)` only to capitalize the first letter, but not to cut words out).
+3. **MUST Use `split()**`: You must break the string apart using the delimiters (`;` and `:` and `_`).
+4. **MUST Use Array Destructuring**: When you split something, unpack it immediately.
+* *Example:* `const [key, value] = str.split(':')`
+
+*/
+
+// const [key, value] = str.split(':')
+
+// const textarea = document.querySelector('textarea');
+// const button = document.querySelector('button');
+
+
+// console.log(`Logging textarea value:
+// ${textarea.value}`)
+
+// // 1. EXTRACT: Get raw text
+// const rawText = textarea.value;
+
+// // 2. SPLIT: Break into lines
+// const lines = rawText.split('\n');
+
+// // 3. PROCESS: Transform each line
+// for (const line of lines) {
+//   // Skip empty lines
+//   if (line.trim() === '') continue;
+
+//   //4 3a. Parse line into components
+//   const pairs = line.split(';'); // ["STATUS:CRITICAL", "ID:404", "ERR:Connection_Timeout"]
+
+//   //5 3b. Extract values using for...of instead of .map()
+//   const values = [];
+//   for (const pair of pairs) {
+//     const [key, value] = pair.split(':');
+//     // console.log(`Logging Key loop`, key)
+//     // console.log(`Logging Value loop`, value)
+//     values.push(value);
+//   }
+
+//   //6 3c. Destructure values
+//   const [rawStatus, id, rawError] = values; // ["CRITICAL", "404", "Connection_Timeout"]
+
+//   // 3d. Transform each component
+//   const formattedStatus = formatStatus(rawStatus);
+//   const formattedId = `Error ${id}:`;
+//   const formattedError = formatError(rawError);
+
+//   // 3e. Output
+//   console.log(`${formattedStatus}! ${formattedId} ${formattedError}`);
+// }
+
+// // Helper functions
+// function formatStatus(raw) {
+//   // Convert to lowercase, then capitalize first letter
+//   const lower = raw.toLowerCase();
+//   const capitalized = lower[0].toUpperCase() + lower.slice(1).toLowerCase();
+
+//   // Add emoji based on original case-insensitive value
+//   const upperRaw = raw.toUpperCase();
+//   if (upperRaw === 'CRITICAL') return `🚨 ${capitalized}`;
+//   if (upperRaw === 'WARN') return `⚠️ ${capitalized}`;
+//   if (upperRaw === 'OK') return `✅ ${capitalized}`;
+//   return capitalized;
+// }
+
+// function formatError(raw) {
+//   // Split by underscore, capitalize each word, join with space
+//   const words = raw.split('_');
+//   let result = '';
+
+//   for (const word of words) {
+//     const capitalized = word[0].toUpperCase() + word.slice(1).toLowerCase();
+//     result += (result ? ' ' : '') + capitalized;
+//   }
+
+//   return result;
+// }
+
+///////////////////////////////////////
+// Alternative
+///////////////////////////////////////
+// const rawText = textarea.value;
+// const lines = rawText.split('\n');
+
+// for (const line of lines) {
+//   if (line.trim() === '') continue;
+
+//   // Split into key-value pairs
+//   const parts = line.split(';');
+
+//   let statusValue = '';
+//   let idValue = '';
+//   let errorValue = '';
+
+//   // Extract values using destructuring
+//   for (const part of parts) {
+//     const [key, value] = part.split(':');
+
+//     if (key === 'STATUS') statusValue = value;
+//     if (key === 'ID') idValue = value;
+//     if (key === 'ERR') errorValue = value;
+//   }
+
+//   // ---- Transform STATUS ----
+//   const statusLower = statusValue.toLowerCase();
+//   const statusFormatted =
+//     statusLower[0].toUpperCase() + statusLower.slice(1);
+
+//   let emoji = '';
+//   const statusUpper = statusValue.toUpperCase();
+
+//   if (statusUpper === 'CRITICAL') emoji = '🚨';
+//   if (statusUpper === 'WARN') emoji = '⚠️';
+//   if (statusUpper === 'OK') emoji = '✅';
+
+//   // ---- Transform ERROR ----
+//   const errorParts = errorValue.split('_');
+//   let errorFormatted = '';
+
+//   for (const word of errorParts) {
+//     const cleanWord =
+//       word[0].toUpperCase() + word.slice(1).toLowerCase();
+
+//     errorFormatted += (errorFormatted ? ' ' : '') + cleanWord;
+//   }
+
+//   // ---- Output ----
+//   console.log(
+//     `${emoji} ${statusFormatted}! Error ${idValue}: ${errorFormatted}`
+//   );
+// }
+
+
+///////////////////////////////////////
+// Google Gemini - Challenge: "The Legacy Flight Board"
+///////////////////////////////////////
+
+/*
+
+### 🧩 The Challenge: "The Legacy Flight Board"
+
+**Scenario:**
+You have been hired by a budget airline to fix their passenger display board. The backend system is ancient (run by a hamster on a wheel, presumably) and spits out flight data in a single, ugly string block.
+
+Your job is to parse this string and display a clean, user-friendly Flight Status Board in the console.
+
+**The Data:**
+Copy this variable into your workspace:
+
+```javascript
+const rawFlightData = `
+  AS-1209|SFO>JFK|08:45|on_time
+  DL-0452|LAX>ORD|12:30|delayed_weather_storm
+  BA-0099|LHR>IAD|17:15|cancelled
+  UA-4401|DEN>SFO|06:00|boarding_now
+`;
+
+```
+
+**The Goal (Expected Output):**
+Your console must log exactly this format:
+
+```text
+✈️ Flight: AS-1209 | 📍 SFO to JFK | 🟢 Status: On Time
+✈️ Flight: DL-0452 | 📍 LAX to ORD | ⚠️ Status: Delayed Weather Storm
+✈️ Flight: BA-0099 | 📍 LHR to IAD | 🔴 Status: Cancelled
+✈️ Flight: UA-4401 | 📍 DEN to SFO | 🔵 Status: Boarding Now
+
+```
+
+---
+
+### 🚦 The Rules (Strict Constraints)
+
+1. **FORBIDDEN:** You cannot use `indexOf`, `lastIndexOf`, `search`, or `substring`.
+2. **FORBIDDEN:** You cannot use `slice` with manual indices to cut words out (e.g., `slice(0, 3)` to get an airport code is **banned**).
+* *Exception:* You **MAY** use `slice(1)` only for the specific purpose of capitalizing a letter (e.g., `str[0].toUpperCase() + str.slice(1)`).
+
+
+3. **MANDATORY:** You must use `.split()` to break the string into lines, and then again to break the lines into segments.
+4. **MANDATORY:** You must use **Array Destructuring** to extract the data segments from your split arrays.
+* *Hint:* The route (`SFO>JFK`) is one segment that contains two pieces of data. You will need to split and destructure that specifically.
+
+5. **MANDATORY:** You must use a `for...of` loop to iterate. (No `.map` or `.forEach` allowed for this exercise, based on your "Learnt" file preferences).
+6. **MANDATORY:** You must clean up the status messages:
+* Replace underscores `_` with spaces.
+* Capitalize the first letter of **every word** in the status (e.g., "delayed_weather_storm" -> "Delayed Weather Storm").
+
+---
+
+### 🧠 Your Task
+
+1. **Analyze:** Look at the delimiters. We have newlines, pipes (`|`), arrows (`>`), and underscores (`_`).
+2. **Draft:** Create your **Code Story** (just like your example). Break down how you will peel the layers of this data onion step-by-step.
+3. **Code:** Write the solution in VS Code.
+4. **Review:** Paste your **Code Story** and your **Final Code** here for my review.
+
+I am ready when you are. Good luck!
+
+*/
+const rawFlightData = `
+  AS-1209|SFO>JFK|08:45|on_time
+  DL-0452|LAX>ORD|12:30|delayed_weather_storm
+  BA-0099|LHR>IAD|17:15|cancelled
+  UA-4401|DEN>SFO|06:00|boarding_now
+`;
+
+/*
+// console.log(rawFlightData)
+
+const trimData = rawFlightData.trim()   // Remove blank lines
+// console.log(trimData)
+
+const lineData = trimData.split('\n')   // Split 
+// console.log(lineData)
+
+for (const line of lineData) {               // 
+  const dataPairs = line.trim().split("|")    // 
+  // console.log(dataPairs)
+
+  const [flight, route, , status] = dataPairs
+  // console.log(flight)
+  // console.log(route)
+  // console.log(times)
+  // console.log(statuses)
+
+  const [origin, destination] = route.split('>')
+  // console.log(...cleanRoute)
+
+  // ---- Transform STATUS ----
+  const lowerStatus = status.toLocaleLowerCase().split('_')
+  // console.log(lowerStatus)
+
+  let capitalStatus = '';
+
+  let emoji = '';
+
+  for (const lower of lowerStatus) {
+    const normalStatus = lower[0].toUpperCase() + lower.slice(1)
+    // console.log(normalStatus)
+
+    capitalStatus += normalStatus
+
+    const statusMap = { // Object literal
+      'on_time': '🟢',
+      'delayed_weather_storm': '⚠️',
+      'cancelled': '🔴',
+      'boarding_now': '🔵',
+    };
+
+    emoji = statusMap[status];
+
+  }
+  ///////////////////////////////////////
+  // ALTERNATIVE
+
+  // const statusLower = status.toLowerCase();
+
+  // if (statusLower === 'on_time') emoji = '🟢';
+  // if (statusLower === 'delayed_weather_storm') emoji = '⚠️';
+  // if (statusLower === 'cancelled') emoji = '🔴';
+  // if (statusLower === 'boarding_now') emoji = '🔵';
+
+  // console.log(capitalStatus)
+
+  const cleanRow = `✈️ Flight: ${flight} | 📍 ${origin} to ${destination} | ${emoji} Status: ${capitalStatus}`
+  console.log(cleanRow)
+}
+
+///////////////////////////////////////
+// ALTERNATIVE
+// let capitalStatus = '';
+
+// for (const lower of lowerStatus) {
+//   const normalStatus =
+//     lower[0].toUpperCase() + lower.slice(1);
+
+//   capitalStatus += normalStatus + ' ';
+// }
+*/
+
+///////////////////////////////////////
+// REFACTORING
+///////////////////////////////////////
+
+// 1. CONFIGURATION (Define maps once, outside the loop)
+const STATUS_EMOJIS = {
+  'on_time': '🟢',
+  'delayed_weather_storm': '⚠️',
+  'cancelled': '🔴',
+  'boarding_now': '🔵',
+};
+
+// 2. PREPARATION
+const trimData = rawFlightData.trim();
+const lineData = trimData.split('\n');
+
+// 3. PROCESSING
+for (const line of lineData) {
+  // Split the row
+  const dataPairs = line.trim().split("|");
+
+  // Destructure (Skipping time)
+  const [flight, route, , rawStatus] = dataPairs;
+
+  // Destructure Route
+  const [origin, destination] = route.split('>');
+
+  // ---- Transform STATUS ----
+  const statusWords = rawStatus.toLowerCase().split('_');
+  let capitalStatus = '';
+
+  for (const word of statusWords) {
+    // Capitalize first letter + rest of word + space
+    capitalStatus += word[0].toUpperCase() + word.slice(1) + ' ';
+  }
+
+  // Look up emoji using the original raw key
+  const emoji = STATUS_EMOJIS[rawStatus] || '⚪'; // Fallback just in case
+
+  // Final Output (Trimming the trailing space on status)
+  const cleanRow = `✈️ Flight: ${flight} | 📍 ${origin} to ${destination} | ${emoji} Status: ${capitalStatus.trim()}`;
+
+  console.log(cleanRow);
+}
