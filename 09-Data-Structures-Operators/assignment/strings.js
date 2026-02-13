@@ -84,7 +84,7 @@ const isContributor = (str) => {
 //     }
 // }
 
-console.log(isContributor('Julie Sussman (Contributor)'));
+// console.log(isContributor('Julie Sussman (Contributor)'));
 
 /*
 Find last in an array:

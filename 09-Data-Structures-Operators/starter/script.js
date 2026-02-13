@@ -1119,5 +1119,6 @@ for (const line of lineData) {
   // Final Output (Trimming the trailing space on status)
   const cleanRow = `✈️ Flight: ${flight} | 📍 ${origin} to ${destination} | ${emoji} Status: ${capitalStatus.trim()}`;
 
-  console.log(cleanRow);
+  // console.log(cleanRow);
 }
+

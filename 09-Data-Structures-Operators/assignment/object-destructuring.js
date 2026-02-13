@@ -19,7 +19,6 @@ const { title, author, ISBN } = books[0];
 Each book object has the keywords property. Destructure the first book object from the books array into a variable called tags. The tags variable should be assigned with the value of the keywords property.
 */
 
-// const [tag] = books;
 const { keywords: tags } = books[0];
 // console.log(tags);
 
@@ -68,11 +67,7 @@ Please do most of the work on the left side of the assignment operator: const ..
 */
 
 // We are trying to get `bookRating = books[0].thirdParty.goodreads.rating;` but we cannot use dot nor bracket notation for destructuring, instead:
-// const {
-//   thirdParty: {
-//     goodreads: { rating: bookRating },
-//   },
-// } = books[0];
+const { thirdParty: { goodreads: { rating: bookRating }, }, } = books[0];
 // console.log("Rating:", bookRating);
 
 // ALTERNATIVE:
